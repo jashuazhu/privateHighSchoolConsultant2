@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Survey — Private HS Consultant</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" role="banner">
+      <div class="container">
+        <h1 class="site-title"><a href="/">Private HS Consultant</a></h1>
+      </div>
+    </header>
+
+    <main id="main" class="site-main" role="main">
+      <div class="container">
+        <h2>Family & Student Survey</h2>
+        <div id="survey-intro" class="prose" aria-live="polite"></div>
+
+        <!-- Default: Netlify Forms. To enable function mode, add data-use-function="true" below. -->
+        <form name="survey" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success">
+          <input type="hidden" name="form-name" value="survey" />
+
+          <p class="visually-hidden">
+            <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+          </p>
+
+          <fieldset>
+            <legend>Contact</legend>
+            <div class="field">
+              <label for="parent_name">Parent/Guardian Name*</label>
+              <input id="parent_name" name="parent_name" type="text" required />
+            </div>
+            <div class="field">
+              <label for="email">Email*</label>
+              <input id="email" name="email" type="email" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" placeholder="(optional)" />
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Student</legend>
+            <div class="field">
+              <label for="student_name">Student Name*</label>
+              <input id="student_name" name="student_name" type="text" required />
+            </div>
+            <div class="field">
+              <label for="current_grade">Current Grade (8–12)*</label>
+              <input id="current_grade" name="current_grade" type="number" min="8" max="12" required />
+            </div>
+            <div class="field">
+              <label for="target_entry_year">Target Entry Year</label>
+              <input id="target_entry_year" name="target_entry_year" type="number" min="2025" max="2035" value="2026" />
+            </div>
+            <div class="field">
+              <label for="region">Region (multi-select)</label>
+              <select id="region" name="region" multiple size="5">
+                <option value="Northeast" selected>Northeast</option>
+                <option value="Southeast">Southeast</option>
+                <option value="Midwest">Midwest</option>
+                <option value="Southwest">Southwest</option>
+                <option value="West">West</option>
+                <option value="International">International</option>
+              </select>
+              <small class="hint">Hold Ctrl/Cmd to select multiple</small>
+            </div>
+            <div class="field">
+              <label for="boarding">Boarding</label>
+              <select id="boarding" name="boarding">
+                <option value="Boarding" selected>Boarding</option>
+                <option value="Day">Day</option>
+                <option value="Either">Either</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="school_size">School Size</label>
+              <select id="school_size" name="school_size">
+                <option value="Small">Small</option>
+                <option value="Middle" selected>Middle</option>
+                <option value="Large">Large</option>
+              </select>
+            </div>
+            <div class="field">
+              <fieldset class="subgroup">
+                <legend>Standardized Tests</legend>
+                <label><input type="checkbox" name="standardized_tests" value="SSAT" /> SSAT</label>
+                <label><input type="checkbox" name="standardized_tests" value="ISEE" /> ISEE</label>
+                <label><input type="checkbox" name="standardized_tests" value="TOEFL" /> TOEFL</label>
+                <label><input type="checkbox" name="standardized_tests" value="SSAT not required" checked /> SSAT not required</label>
+              </fieldset>
+            </div>
+            <div class="field">
+              <label for="target_ranking_tier">Target Ranking Tier</label>
+              <select id="target_ranking_tier" name="target_ranking_tier">
+                <option value="Top 25">Top 25</option>
+                <option value="Top 50">Top 50</option>
+                <option value="Top 100">Top 100</option>
+                <option value="Flexible" selected>Flexible</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="interests">Interests</label>
+              <input id="interests" name="interests" type="text" placeholder="e.g., robotics, rowing, debate" />
+            </div>
+            <div class="field">
+              <label for="budget">Budget</label>
+              <input id="budget" name="budget" type="text" placeholder="e.g., up to $45k/year" />
+            </div>
+            <div class="field">
+              <label for="notes">Notes</label>
+              <textarea id="notes" name="notes" rows="4" placeholder="Anything else we should know?"></textarea>
+            </div>
+          </fieldset>
+
+          <div id="form-status" role="status" aria-live="polite" class="form-status" ></div>
+
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <button class="btn" type="button" disabled title="Not implemented yet">Generate Report</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <small>&copy; <span id="year"></span> Private HS Consultant</small>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+  </html>
+

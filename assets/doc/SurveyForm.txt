@@ -1,0 +1,99 @@
+Student School Selection Survey Form
+
+1. Basic Information
+
+Student Name: ____________________________
+
+Age: _______
+
+Gender: □ Male □ Female □ Other: __________
+
+Current Grade: _______
+
+Current City/Region: ____________________________
+
+Nationality: ____________________________
+
+Parent/Guardian Name: ____________________________
+
+Parent Email: ____________________________
+
+Phone Number: ____________________________
+
+2. Academic Background
+
+Current School: ____________________________
+
+School Type: □ Public □ Private □ International
+
+GPA / Average grades for the past 3 years: ____________________________
+
+Strong Subjects: ____________________________
+
+Subjects needing support: ____________________________
+
+Standardized Tests Taken: □ SSAT □ ISEE □ TOEFL □ IELTS □ SAT □ ACT □ Other: __________
+
+Scores: ____________________________
+
+Languages spoken: ____________________________
+
+3. Target School Preferences
+
+Intended Entry Grade: □ 9 □ 10 □ 11 □ Other: __________
+
+Preferred Region: □ Northeast □ Midwest □ South □ West □ No preference
+
+Boarding Requirement: □ Yes □ No □ Either
+
+School Size: □ Small (<300) □ Medium (300–600) □ Large (>600)
+
+School Type: □ Co-ed □ Boys □ Girls
+
+Academic Programs Desired: □ IB □ AP □ Honors □ STEM □ Arts/Music □ Athletics
+
+Target School Ranking Level: □ Top 50 □ Top 100 □ Flexible
+
+SSAT Requirement Preference: □ Acceptable □ Must be Test-Optional
+
+Preferred Acceptance Rate: □ >20% □ >30% □ Flexible
+
+4. Extracurricular Activities
+
+Current Activities: ____________________________
+
+Hobbies/Interests: ____________________________
+
+Music/Arts Background: ____________________________
+
+Sports Involvement: ____________________________
+
+Community Service / Leadership Experience: ____________________________
+
+5. Special Considerations
+
+Learning Support Needs: □ None □ Yes → Please specify: __________
+
+Medical Needs: ____________________________
+
+Religious or Cultural Considerations: ____________________________
+
+International Student Support Needed: □ Yes □ No
+
+6. Family Considerations
+
+Annual Tuition Budget: □ <$30,000 □ $30,000–$50,000 □ $50,000–$70,000 □ $70,000+
+
+Need for Financial Aid: □ Yes □ No
+
+Preferred School Environment: □ Urban □ Suburban □ Rural
+
+Legacy / Alumni Connection: □ Yes □ No □ Not Applicable
+
+7. Future Planning
+
+College Aspirations: ____________________________
+
+Career Interests: ____________________________
+
+Parent Educational Goals: ____________________________
