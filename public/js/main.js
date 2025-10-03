@@ -92,8 +92,9 @@
   document.addEventListener('DOMContentLoaded', () => {
     setYear();
 
-    // Index bottom content
-    if (document.body && document.body.contains(document.querySelector('#index-doc'))) {
+    // Index bottom content (optional injection only if container requests it)
+    const indexDocEl = document.querySelector('#index-doc[data-inject="true"]');
+    if (indexDocEl) {
       loadTextInto('#index-doc', '/assets/doc/index.txt');
     }
 
@@ -113,4 +114,3 @@
     }
   });
 })();
-
