@@ -60,7 +60,8 @@ function buildRow(payload) {
 }
 
 async function getFileMeta({ owner, repo, branch, path, token }) {
-  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}?ref=${encodeURIComponent(branch)}`;
+  const encodedPath = path.split('/').map(encodeURIComponent).join('/');
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodedPath}?ref=${encodeURIComponent(branch)}`;
   const res = await fetch(url, { headers: { Authorization: `token ${token}`, 'User-Agent': 'netlify-function-append-csv' } });
   if (res.status === 404) return { exists: false };
   if (!res.ok) throw new Error(`GitHub GET failed: ${res.status}`);
@@ -69,7 +70,8 @@ async function getFileMeta({ owner, repo, branch, path, token }) {
 }
 
 async function putFile({ owner, repo, branch, path, token, content, sha, message }) {
-  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}`;
+  const encodedPath = path.split('/').map(encodeURIComponent).join('/');
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${encodedPath}`;
   const body = {
     message: message || 'append submission',
     content: b64(content),
@@ -113,11 +115,29 @@ exports.handler = async (event, context) => {
     return { statusCode: 500, headers: corsHeaders(), body: JSON.stringify({ error: 'Missing GitHub env vars' }) };
   }
 
-  let payload;
+  // Parse JSON or x-www-form-urlencoded bodies
+  let payload = {};
+  const raw = event.isBase64Encoded ? Buffer.from(event.body || '', 'base64').toString('utf8') : (event.body || '');
+  const ctype = (event.headers && (event.headers['content-type'] || event.headers['Content-Type'])) || '';
   try {
-    payload = JSON.parse(event.body || '{}');
+    if (/application\/json/i.test(ctype)) {
+      payload = JSON.parse(raw || '{}');
+    } else if (/application\/x-www-form-urlencoded/i.test(ctype)) {
+      const params = new URLSearchParams(raw);
+      // Collect all keys, including duplicates into arrays
+      const obj = {};
+      for (const [k, v] of params.entries()) {
+        if (obj[k] == null) obj[k] = v;
+        else if (Array.isArray(obj[k])) obj[k].push(v);
+        else obj[k] = [obj[k], v];
+      }
+      payload = obj;
+    } else {
+      // Fallback: attempt JSON first, otherwise treat as empty
+      payload = raw ? JSON.parse(raw) : {};
+    }
   } catch (_) {
-    return { statusCode: 400, headers: corsHeaders(), body: JSON.stringify({ error: 'Invalid JSON' }) };
+    return { statusCode: 400, headers: corsHeaders(), body: JSON.stringify({ error: 'Invalid request body' }) };
   }
 
   // Basic validation for key required fields
@@ -144,4 +164,3 @@ exports.handler = async (event, context) => {
     return { statusCode: 502, headers: corsHeaders(), body: JSON.stringify({ error: String(err.message || err) }) };
   }
 };
-
