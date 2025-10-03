@@ -7,7 +7,8 @@ Purpose: Shared guidance for agents/humans working in this repo. Keep the site f
 Project Layout
 
 - `public/` is the published root on Netlify.
-- `assets/doc/index.txt` is injected at the bottom of `public/index.html`.
+- `public/index.html` includes a static, formatted “What we offer” section by default.
+- Optionally, you can inject `assets/doc/index.txt` into that section by adding `data-inject="true"` to the container with id `index-doc` (JS will only inject when this attribute is present).
 - `assets/doc/survey_intro.txt` (optional) is injected above the form on `public/survey.html` if present.
 - `netlify/functions/append-csv.js` is optional, disabled by default.
 - `data/` is where `submissions.csv` will live if you enable the function path (committed via the GitHub API).
@@ -21,7 +22,7 @@ Authoring Rules
 
 Content Injection
 
-- Index page bottom content comes from `assets/doc/index.txt`.
+- Index page bottom content is static HTML by default. If you want to drive it from `assets/doc/index.txt`, add `data-inject="true"` to `#index-doc`.
 - Survey page optional lead-in comes from `assets/doc/survey_intro.txt` if the file exists.
 - The client code (`public/js/main.js`) fetches these `.txt` files and converts line breaks to paragraphs.
 
@@ -55,4 +56,3 @@ Future Notes
 
 - If a DB is introduced later, keep the same field names to minimize migration friction.
 - Report generation is intentionally stubbed (disabled button). Build as a separate static/edge feature later.
-

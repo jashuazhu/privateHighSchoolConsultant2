@@ -14,13 +14,14 @@ Two-page static site deployable on Netlify with zero-backend form collection via
 
 ## Pages
 
-- `/` → `public/index.html`: Minimal hero with a centered CTA to the survey. Bottom content injected from `assets/doc/index.txt`.
+- `/` → `public/index.html`: Minimal hero with a centered CTA to the survey. Bottom content includes a static, formatted “What we offer” section.
 - `/survey` → `public/survey.html`: User info form with HTML5 validation.
 - `/success` → `public/success.html`: Shown after a successful Netlify Forms submission.
 
 ## Content
 
-- Edit `assets/doc/index.txt` to change the “What we offer” content rendered at the bottom of the homepage.
+- To customize the “What we offer” section, edit `public/index.html` directly.
+- Optional: If you prefer content from `assets/doc/index.txt`, add `data-inject="true"` to the `#index-doc` element in `public/index.html` and the site JS will inject that text (note: injection renders as paragraphs, not lists).
 - Optionally add/edit `assets/doc/survey_intro.txt` to show a short lead-in above the survey form.
 
 ## Data Collection (Primary: Netlify Forms)
@@ -79,4 +80,3 @@ WORKLOG.md
 ## Support
 
 Open an issue in your fork or adapt as needed. The default path requires no backend.
-
